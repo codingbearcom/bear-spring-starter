@@ -1,0 +1,15 @@
+#
+# Copyright (c) 2019 Coding Bear s.r.o.
+#
+version: '3'
+services:
+  bss-db:
+    image: postgres:11.1-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: bss
+    volumes:
+      - ../../application/src/main/resources/sql/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+    hostname: db

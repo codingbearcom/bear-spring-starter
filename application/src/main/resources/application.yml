@@ -1,0 +1,44 @@
+#
+# Copyright (c) 2019 Coding Bear s.r.o.
+#
+
+# General sample_application settings
+
+spring:
+  profiles.active: development
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+server:
+  port: 8080
+
+resteasy:
+  jaxrs:
+    app:
+      registration: property
+      classes: com.codingbear.bss.application.JaxrsApplication
+
+---
+# Datasource settings
+
+spring:
+  profiles: development
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bss
+    username: postgres
+    password: admin1234
+    pool:
+      max-size: 10
+      minIdleSize: 0
+
+logging:
+  level:
+    root: info
+    com.codingbear.bss.application.filter.ServerLoggingFilter: debug
