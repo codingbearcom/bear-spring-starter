@@ -2,10 +2,10 @@
  * Copyright (c) 2019 Coding Bear s.r.o.
  */
 plugins {
-    id("org.springframework.boot") version "2.1.1.RELEASE" apply false
-    id("io.spring.dependency-management") version "1.0.6.RELEASE"
-    id("com.avast.gradle.docker-compose") version "0.8.12"
-    id ("org.sonarqube") version "2.8"
+    id("org.springframework.boot") version "2.3.3.RELEASE" apply false
+    id("io.spring.dependency-management") version "1.0.10.RELEASE"
+    id("com.avast.gradle.docker-compose") version "0.13.2"
+    id("org.sonarqube") version "2.8"
     checkstyle
     java
 }
@@ -30,19 +30,11 @@ subprojects {
 
     dependencyManagement {
         dependencies {
-            dependencySet("org.junit.jupiter:5.3.2") {
-                entry("junit-jupiter-api")
-                entry("junit-jupiter-engine")
-                entry("junit-jupiter-params")
-            }
-
-            dependencySet("org.springframework.boot:2.1.1.RELEASE") {
+            dependencySet("org.springframework.boot:2.3.3.RELEASE") {
                 entry("spring-boot-starter")
                 entry("spring-boot-starter-test") {
-                    // the test starter comes with junit 4, we will replace it with junit 5
-                    exclude("junit:junit")
+                    exclude("org.junit.vintage:junit-vintage-engine")
                 }
-
                 entry("spring-boot-starter-jetty")
                 entry("spring-boot-starter-web") {
                     exclude("org.springframework.boot:spring-boot-starter-tomcat")
@@ -53,25 +45,22 @@ subprojects {
                 entry("spring-boot-starter-jdbc")
             }
 
-            // resteasy spring boot starter has also dependency on resteasy; both should be in sync
-            dependencySet("org.jboss.resteasy:3.8.0.Final") {
-                entry("resteasy-jaxrs")
-                entry("resteasy-json-p-provider'")
-                entry("resteasy-client")
-                entry("resteasy-jackson2-provider")
-            }
-
-            dependency("org.jboss.resteasy:resteasy-spring-boot-starter:3.1.0.Final")
+            dependency("org.jboss.resteasy:resteasy-spring-boot-starter:4.6.1.Final")
 
             dependency("javax.inject:javax.inject:1")
 
-            dependency("org.postgresql:postgresql:42.2.5")
-            dependency("commons-io:commons-io:2.6")
-            dependency("org.apache.commons:commons-collections4:4.3")
-            dependency("org.apache.commons:commons-lang3:3.9")
-            dependency("io.rest-assured:rest-assured:3.1.1")
+            dependency("org.postgresql:postgresql:42.2.15")
+            dependency("commons-io:commons-io:2.7")
+            dependency("org.apache.commons:commons-collections4:4.4")
+            dependency("org.apache.commons:commons-lang3:3.11")
 
-            dependency("com.xebialabs.restito:restito:0.9.3") {
+            dependencySet("io.rest-assured:4.2.0") {
+                entry("rest-assured")
+                entry("xml-path")
+                entry("json-path")
+            }
+
+            dependency("com.xebialabs.restito:restito:0.9.4") {
                 // this comes with junit 4, we will replace it with junit 5
                 exclude("junit:junit")
             }
@@ -85,7 +74,7 @@ subprojects {
     }
 
     checkstyle {
-        toolVersion = "8.1"
+        toolVersion = "8.35"
     }
 
     java {

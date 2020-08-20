@@ -4,15 +4,17 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 dependencies {
-    testCompile(project(":application"))
-    testCompile("org.springframework.boot", "spring-boot-starter-test")
-    testCompile("io.rest-assured", "rest-assured")
-    testCompile("org.mockito", "mockito-core")
-    testCompile("com.xebialabs.restito", "restito")
-    testCompile("commons-io", "commons-io")
-    testCompile("org.junit.jupiter", "junit-jupiter-api")
-    testCompile("org.junit.jupiter", "junit-jupiter-params")
-    testRuntime("org.junit.jupiter", "junit-jupiter-engine")
+    testImplementation(project(":application"))
+    testImplementation("org.springframework.boot", "spring-boot-starter-test")
+    testImplementation("org.springframework.boot", "spring-boot-starter-data-jpa")
+    testImplementation("org.springframework.boot", "spring-boot-starter-web")
+    testImplementation("io.rest-assured", "rest-assured")
+    testImplementation("org.mockito", "mockito-core")
+    testImplementation("com.xebialabs.restito", "restito")
+    testImplementation("commons-io", "commons-io")
+    testImplementation("org.junit.jupiter", "junit-jupiter-api")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params")
+    testRuntimeOnly("org.junit.jupiter", "junit-jupiter-engine")
 }
 
 sourceSets {

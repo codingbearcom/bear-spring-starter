@@ -4,7 +4,7 @@
 version: '3'
 services:
   bss-db:
-    image: postgres:11.1-alpine
+    image: postgres:12.4-alpine
     ports:
       - "5432:5432"
     environment:

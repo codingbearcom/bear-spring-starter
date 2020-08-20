@@ -4,25 +4,25 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 dependencies {
-    compile("org.springframework.boot", "spring-boot-starter-web")
-    compile("org.springframework.boot", "spring-boot-starter-web-services")
-    compile("org.springframework.boot", "spring-boot-starter-data-jpa")
-    compile("org.springframework.boot", "spring-boot-starter-jetty")
-    compile("org.springframework.boot", "spring-boot-starter-logging")
-    compile("javax.inject:javax.inject")
+    implementation("org.springframework.boot", "spring-boot-starter-web")
+    implementation("org.springframework.boot", "spring-boot-starter-web-services")
+    implementation("org.springframework.boot", "spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot", "spring-boot-starter-jetty")
+    implementation("org.springframework.boot", "spring-boot-starter-logging")
+    implementation("javax.inject:javax.inject")
 
-    compile("org.jboss.resteasy:resteasy-spring-boot-starter")
+    implementation("org.jboss.resteasy:resteasy-spring-boot-starter")
 
-    compile("org.postgresql", "postgresql")
+    implementation("org.postgresql", "postgresql")
 
-    compile("commons-io", "commons-io")
-    compile("org.apache.commons", "commons-collections4")
-    compile("org.apache.commons", "commons-lang3")
+    implementation("commons-io", "commons-io")
+    implementation("org.apache.commons", "commons-collections4")
+    implementation("org.apache.commons", "commons-lang3")
 
-    testCompile("org.springframework.boot", "spring-boot-starter-test")
-    testCompile("org.junit.jupiter:junit-jupiter-api")
-    testCompile("org.junit.jupiter:junit-jupiter-params")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.springframework.boot", "spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 // by default the Spring boot plugin will replace a normal jar with boot jar
